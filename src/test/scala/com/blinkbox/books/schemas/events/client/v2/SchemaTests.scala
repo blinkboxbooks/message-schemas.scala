@@ -1,8 +1,8 @@
 package com.blinkbox.books.schemas.events.client.v2
 
-import com.blinkbox.books.messaging.{EventBody, JsonEventBody}
+import com.blinkbox.books.messaging.JsonEventBody
 import com.blinkbox.books.schemas.events.user.v2.UserId
-import org.joda.time.{DateTimeZone, DateTime}
+import org.joda.time.{DateTime, DateTimeZone}
 import org.scalatest.FunSuite
 
 class SchemaTests extends FunSuite {
@@ -11,8 +11,7 @@ class SchemaTests extends FunSuite {
   val testClient = Client(ClientId(123), "Test Client", "Apple", "iPhone", "iOS")
 
   test("Construct and destructure Client.Deregistered message") {
-    val body: EventBody = JsonEventBody(Client.Deregistered(now, testUserId, testClient))
-    body match {
+    JsonEventBody(Client.Deregistered(now, testUserId, testClient)) match {
       case Client.Deregistered(ts, userId, client) => assert(ts == now && userId == testUserId && client == testClient)
     }
   }
