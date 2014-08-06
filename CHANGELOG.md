@@ -1,5 +1,13 @@
 # Change log
 
+## 0.2.0 ([#3](https://git.mobcastdev.com/Hermes/message-schemas/pull/3) 2014-08-06 16:09:39)
+
+Updated common-messaging version
+
+### Breaking changes
+
+- Updated common-messaging dependency to 1.0.0
+
 ## 0.1.1 ([#2](https://git.mobcastdev.com/Hermes/message-schemas/pull/2) 2014-08-01 17:35:55)
 
 Auth events now match the schemas
