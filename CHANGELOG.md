@@ -1,5 +1,14 @@
 # Change log
 
+## 0.3.0 ([#4](https://git.mobcastdev.com/Hermes/message-schemas/pull/4) 2014-08-07 13:50:43)
+
+Added User Credited event
+
+### New features:
+
+- Added `User.Credited` event for notifications when users are assigned credit to their account.
+
+
 ## 0.2.0 ([#3](https://git.mobcastdev.com/Hermes/message-schemas/pull/3) 2014-08-06 16:09:39)
 
 Updated common-messaging version
