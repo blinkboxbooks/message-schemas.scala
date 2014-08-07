@@ -34,4 +34,12 @@ class SchemaTests extends FunSuite {
       case User.Updated(ts, user, previous) => assert(ts == now && user == testUser && previous == previousDetails)
     }
   }
+
+  test("Construct and destructure User.Credited message") {
+    val (originalAmount, originalCurrency, originalReason) = (BigDecimal("3.99"), "GBP", "hudl2")
+    JsonEventBody(User.Credited(now, testUser, originalAmount, originalCurrency, originalReason)) match {
+      case User.Credited(ts, user, amount, currency, reason) =>
+        assert(ts == now && user == testUser && amount == originalAmount && currency == originalCurrency && reason == originalReason)
+    }
+  }
 }

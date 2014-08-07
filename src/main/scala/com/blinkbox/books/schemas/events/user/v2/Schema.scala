@@ -12,6 +12,7 @@ object User {
   case class Authenticated(timestamp: DateTime, user: User, client: Option[Client]) extends Event
   case class Registered(timestamp: DateTime, user: User) extends Event
   case class Updated(timestamp: DateTime, user: User, previousDetails: User) extends Event
+  case class Credited(timestamp: DateTime, user: User, amount: BigDecimal, currency: String, reason: String)
 
   implicit object Authenticated extends JsonEventBody[Authenticated] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.authenticated.v2+json")
@@ -26,5 +27,11 @@ object User {
   implicit object Updated extends JsonEventBody[Updated] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.updated.v2+json")
     def unapply(body: EventBody): Option[(DateTime, User, User)] = JsonEventBody.unapply[Updated](body).flatMap(Updated.unapply)
+  }
+
+  implicit object Credited extends JsonEventBody[Credited] {
+    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.credited.v2+json")
+    def unapply(body: EventBody): Option[(DateTime, User, BigDecimal, String, String)] =
+      JsonEventBody.unapply[Credited](body).flatMap(Credited.unapply)
   }
 }
