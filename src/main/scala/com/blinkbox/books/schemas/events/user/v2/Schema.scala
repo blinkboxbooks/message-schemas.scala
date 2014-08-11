@@ -41,12 +41,12 @@ object User {
   }
 
   implicit object PasswordChanged extends JsonEventBody[PasswordChanged] {
-    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.passwordChanged.v2+json")
+    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.password-changed.v2+json")
     def unapply(body: EventBody): Option[(DateTime, User)] = JsonEventBody.unapply[PasswordChanged](body).flatMap(PasswordChanged.unapply)
   }
 
   implicit object PasswordResetRequested extends JsonEventBody[PasswordResetRequested] {
-    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.passwordResetRequested.v2+json")
+    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.password-reset-requested.v2+json")
     def unapply(body: EventBody): Option[(DateTime, User, String, URL)] = JsonEventBody.unapply[PasswordResetRequested](body).flatMap(PasswordResetRequested.unapply)
   }
 }

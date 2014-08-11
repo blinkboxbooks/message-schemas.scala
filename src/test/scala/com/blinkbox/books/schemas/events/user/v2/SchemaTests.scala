@@ -1,5 +1,7 @@
 package com.blinkbox.books.schemas.events.user.v2
 
+import java.net.URL
+
 import com.blinkbox.books.messaging.JsonEventBody
 import com.blinkbox.books.schemas.events.client.v2._
 import org.joda.time.{DateTime, DateTimeZone}
@@ -33,7 +35,6 @@ class SchemaTests extends FunSuite {
     val previousDetails = UserProfile(User(UserId(456), "fred@example.org", "Fred", "Smith"), "v2", CommunicationPreferences(allowFromBooks = false))
     JsonEventBody(User.Updated(now, testUserProfile, previousDetails)) match {
       case User.Updated(ts, user, previous) => assert(ts == now && user == testUserProfile && previous == previousDetails)
-
     }
   }
 
@@ -42,6 +43,21 @@ class SchemaTests extends FunSuite {
     JsonEventBody(User.Credited(now, testUser, originalAmount, originalCurrency, originalReason)) match {
       case User.Credited(ts, user, amount, currency, reason) =>
         assert(ts == now && user == testUser && amount == originalAmount && currency == originalCurrency && reason == originalReason)
+    }
+  }
+
+  test("Construct and destructure User.PasswordChanged message") {
+    JsonEventBody(User.PasswordChanged(now, testUser)) match {
+      case User.PasswordChanged(ts, user) => assert(ts == now && user == testUser)
+    }
+  }
+
+  test("Construct and destructure User.PasswordResetRequested message") {
+    val testToken = "2983nns39d"
+    val testLink = new URL(s"https://www.blinkboxbooks.com/reset-password/$testToken")
+    JsonEventBody(User.PasswordResetRequested(now, testUser, testToken, testLink)) match {
+      case User.PasswordResetRequested(ts, user, token, link) =>
+        assert(ts == now && user == testUser && token == testToken && link == testLink)
     }
   }
 }
