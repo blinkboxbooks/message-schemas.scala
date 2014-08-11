@@ -8,8 +8,8 @@ import org.joda.time.DateTime
 
 case class UserId(value: Int) extends AnyVal
 case class User(id: UserId, username: String, firstName: String, lastName: String)
-case class UserProfile(user: User, acceptedTermsVersion: String, communications: CommunicationPreferences)
-case class CommunicationPreferences(allowFromBooks: Boolean)
+case class UserProfile(user: User, acceptedTermsVersion: String, marketing: MarketingPreferences)
+case class MarketingPreferences(allowFromBooks: Boolean)
 
 object User {
   case class Authenticated(timestamp: DateTime, user: User, client: Option[Client])

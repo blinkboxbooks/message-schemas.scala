@@ -11,7 +11,7 @@ class SchemaTests extends FunSuite {
   val now = DateTime.now(DateTimeZone.UTC)
   val testClient = Client(ClientId(123), "Test Client", "Apple", "iPhone", "iOS")
   val testUser = User(UserId(456), "john.doe@example.org", "John", "Doe")
-  val testUserProfile = UserProfile(testUser, "v1", CommunicationPreferences(allowFromBooks = true))
+  val testUserProfile = UserProfile(testUser, "v1", MarketingPreferences(allowFromBooks = true))
 
   test("Construct and destructure User.Authenticated message without a client") {
     JsonEventBody(User.Authenticated(now, testUser, None)) match {
@@ -32,7 +32,7 @@ class SchemaTests extends FunSuite {
   }
 
   test("Construct and destructure User.Updated message") {
-    val previousDetails = UserProfile(User(UserId(456), "fred@example.org", "Fred", "Smith"), "v2", CommunicationPreferences(allowFromBooks = false))
+    val previousDetails = UserProfile(User(UserId(456), "fred@example.org", "Fred", "Smith"), "v2", MarketingPreferences(allowFromBooks = false))
     JsonEventBody(User.Updated(now, testUserProfile, previousDetails)) match {
       case User.Updated(ts, user, previous) => assert(ts == now && user == testUserProfile && previous == previousDetails)
     }
