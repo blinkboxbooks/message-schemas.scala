@@ -1,5 +1,19 @@
 # Change log
 
+## 0.4.0 ([#5](https://git.mobcastdev.com/Hermes/message-schemas/pull/5) 2014-08-11 11:49:45)
+
+Modified the User type, and new password messages
+
+### Breaking changes
+
+- The `User` object no longer includes an `allowMarketingCommunication` flag. This has been moved into the new `UserProfile` object.
+- Messages no longer inherit from an `Event` marker trait as it turned out to be useless.
+
+### New features
+
+- Now has a `UserProfile` object which encapsulates more detail about a user.
+- Added `User.PasswordChanged` and `User.PasswordResetRequested` message types.
+
 ## 0.3.0 ([#4](https://git.mobcastdev.com/Hermes/message-schemas/pull/4) 2014-08-07 13:50:43)
 
 Added User Credited event
