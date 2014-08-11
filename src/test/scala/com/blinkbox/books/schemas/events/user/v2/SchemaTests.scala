@@ -8,7 +8,8 @@ import org.scalatest.FunSuite
 class SchemaTests extends FunSuite {
   val now = DateTime.now(DateTimeZone.UTC)
   val testClient = Client(ClientId(123), "Test Client", "Apple", "iPhone", "iOS")
-  val testUser = User(UserId(456), "john.doe@example.org", "John", "Doe", allowMarketingCommunications = true)
+  val testUser = User(UserId(456), "john.doe@example.org", "John", "Doe")
+  val testUserProfile = UserProfile(testUser, "v1", CommunicationPreferences(allowFromBooks = true))
 
   test("Construct and destructure User.Authenticated message without a client") {
     JsonEventBody(User.Authenticated(now, testUser, None)) match {
@@ -23,15 +24,16 @@ class SchemaTests extends FunSuite {
   }
 
   test("Construct and destructure User.Registered message") {
-    JsonEventBody(User.Registered(now, testUser)) match {
-      case User.Registered(ts, user) => assert(ts == now && user == testUser)
+    JsonEventBody(User.Registered(now, testUserProfile)) match {
+      case User.Registered(ts, user) => assert(ts == now && user == testUserProfile)
     }
   }
 
   test("Construct and destructure User.Updated message") {
-    val previousDetails = User(UserId(456), "fred@example.org", "Fred", "Smith", allowMarketingCommunications = false)
-    JsonEventBody(User.Updated(now, testUser, previousDetails)) match {
-      case User.Updated(ts, user, previous) => assert(ts == now && user == testUser && previous == previousDetails)
+    val previousDetails = UserProfile(User(UserId(456), "fred@example.org", "Fred", "Smith"), "v2", CommunicationPreferences(allowFromBooks = false))
+    JsonEventBody(User.Updated(now, testUserProfile, previousDetails)) match {
+      case User.Updated(ts, user, previous) => assert(ts == now && user == testUserProfile && previous == previousDetails)
+
     }
   }
 

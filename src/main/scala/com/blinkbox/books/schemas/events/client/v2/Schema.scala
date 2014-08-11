@@ -8,10 +8,9 @@ case class ClientId(value: Int) extends AnyVal
 case class Client(id: ClientId, name: String, brand: String, model: String, os: String)
 
 object Client {
-  sealed trait Event
-  case class Deregistered(timestamp: DateTime, userId: UserId, client: Client) extends Event
-  case class Registered(timestamp: DateTime, userId: UserId, client: Client) extends Event
-  case class Updated(timestamp: DateTime, userId: UserId, client: Client, previousDetails: Client) extends Event
+  case class Deregistered(timestamp: DateTime, userId: UserId, client: Client)
+  case class Registered(timestamp: DateTime, userId: UserId, client: Client)
+  case class Updated(timestamp: DateTime, userId: UserId, client: Client, previousDetails: Client)
 
   implicit object Deregistered extends JsonEventBody[Deregistered] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.client.deregistered.v2+json")
