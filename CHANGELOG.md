@@ -1,5 +1,16 @@
 # Change log
 
+## 0.5.0 ([#6](https://git.mobcastdev.com/Hermes/message-schemas/pull/6) 2014-08-14 11:16:23)
+
+Added account suspended/closed and SSO details
+
+### Breaking changes
+
+- The `UserProfile` constructor now accepts an `AccountInfo` object
+rather than an `acceptedTermsVersion` string.
+- `AccountInfo` object has details including whether the account is
+suspended or closed, plus an SSO user identifier.
+
 ## 0.4.0 ([#5](https://git.mobcastdev.com/Hermes/message-schemas/pull/5) 2014-08-11 11:49:45)
 
 Modified the User type, and new password messages
