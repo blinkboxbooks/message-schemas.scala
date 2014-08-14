@@ -8,7 +8,8 @@ import org.joda.time.DateTime
 
 case class UserId(value: Int) extends AnyVal
 case class User(id: UserId, username: String, firstName: String, lastName: String)
-case class UserProfile(user: User, acceptedTermsVersion: String, marketing: MarketingPreferences)
+case class UserProfile(user: User, account: AccountInfo, marketing: MarketingPreferences)
+case class AccountInfo(acceptedTermsVersion: String, suspended: Boolean = false, closed: Boolean = false, ssoUserId: Option[String] = None)
 case class MarketingPreferences(allowFromBooks: Boolean)
 
 object User {
