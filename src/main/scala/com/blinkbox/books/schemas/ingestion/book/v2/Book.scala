@@ -2,12 +2,10 @@ package com.blinkbox.books.schemas.ingestion.book.v2
 
 import java.net.URI
 
-import com.blinkbox.books.messaging.{EventHeader, Event, JsonEventBody, MediaType}
+import com.blinkbox.books.messaging.{JsonEventBody, MediaType}
 import org.joda.time.DateTime
 
-object Epub {
-
-  case class EpubMetadata(wordCount: Long, size: Long)
+object Book {
 
   case class UriModel(`type`: String, uri: URI)
 
@@ -25,18 +23,12 @@ object Epub {
 
   case class EpubMessage(isbn: String, publisher: String, epubUrl: String, deliveredAt: DateTime)
 
-  case class Ingestion(classification: List[Classification], media: Media, source: Source)
+  case class Metadata(classification: List[Classification], media: Media, source: Source)
 
   val jsonMediaType = MediaType("application/vnd.blinkbox.books.ingestion.book.metadata.v2+json")
 
-  object Ingestion extends JsonEventBody[Ingestion] {
-    val jsonMediaType = Epub.jsonMediaType
+  implicit object Metadata extends JsonEventBody[Metadata] {
+    val jsonMediaType = Book.jsonMediaType
   }
 
-  def convert(event: Event)(implicit manifest: Manifest[Ingestion]): Option[Ingestion] = {
-    JsonEventBody.unapply[Ingestion](event.body)(manifest, Ingestion)
-  }
-  def convert(ingestion: Ingestion) = {
-    Event.json(EventHeader("epub-ingestion"), ingestion)(Ingestion)
-  }
 }
