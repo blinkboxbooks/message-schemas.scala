@@ -23,7 +23,7 @@ object Book {
 
   case class Source(`$remaining`: Remaining)
 
-  case class EpubMessage(isbn: String, publisher: String, epubUrl: String, deliveredAt: DateTime)
+  case class BookInfo(isbn: String, publisher: String, epubUrl: String, deliveredAt: DateTime)
 
   case class Metadata(classification: List[Classification], media: Media, source: Source)
 
