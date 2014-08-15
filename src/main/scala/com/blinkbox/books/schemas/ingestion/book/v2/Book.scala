@@ -7,6 +7,8 @@ import org.joda.time.DateTime
 
 object Book {
 
+  case class WordAndSize(wordCount: Long, size: Long)
+
   case class UriModel(`type`: String, uri: URI)
 
   case class EpubModel(classification: List[Classification], uris: List[UriModel], keyFile: Option[URI], wordcount: Long, size: Long)
