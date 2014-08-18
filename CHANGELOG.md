@@ -1,5 +1,12 @@
 # Change log
 
+## 0.5.1 ([#7](https://git.mobcastdev.com/Hermes/message-schemas/pull/7) 2014-08-14 15:35:06)
+
+CP-1563: Added Epub ingestion schema case classes
+
+improvement
+
+
 ## 0.5.0 ([#6](https://git.mobcastdev.com/Hermes/message-schemas/pull/6) 2014-08-14 11:16:23)
 
 Added account suspended/closed and SSO details
