@@ -10,7 +10,7 @@ package v2 {
   class EmailSchemaTests extends FunSuite {
 
     val now = DateTime.now(DateTimeZone.UTC)
-    val testUser = v2.User("john.doe@example.org", "456")
+    val testUser = v2.User(UserId(456), "john.doe@example.org")
     val templateName = "test template"
     val exampleAttributes = Map("foo" -> "42", "bar" -> "3.14")
 

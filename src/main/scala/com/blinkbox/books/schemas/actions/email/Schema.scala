@@ -5,7 +5,8 @@ import org.joda.time.DateTime
 
 package v2 {
 
-  case class User(emailAddress: String, id: String)
+  case class UserId(value: Int) extends AnyVal
+  case class User(id: UserId, username: String)
 
   object Email {
 
