@@ -1,4 +1,4 @@
-package com.blinkbox.books.schemas.events.email
+package com.blinkbox.books.schemas.actions.email
 
 import org.joda.time.DateTime
 import org.scalatest.FunSuite
