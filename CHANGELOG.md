@@ -1,5 +1,14 @@
 # Change log
 
+## 0.6.0 ([#8](https://git.mobcastdev.com/Hermes/message-schemas/pull/8) 2014-08-19 11:28:42)
+
+Added Email.Send message.
+
+### New feature
+
+* Added 'Email.Send' message as defined in schemas project.
+
+
 ## 0.5.1 ([#7](https://git.mobcastdev.com/Hermes/message-schemas/pull/7) 2014-08-14 15:35:06)
 
 CP-1563: Added Epub ingestion schema case classes
