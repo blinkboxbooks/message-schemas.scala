@@ -55,9 +55,9 @@ class SchemaTests extends FunSuite {
   test("Construct and destructure User.PasswordResetRequested message") {
     val testToken = "2983nns39d"
     val testLink = new URL(s"https://www.blinkboxbooks.com/reset-password/$testToken")
-    JsonEventBody(User.PasswordResetRequested(now, testUser, testToken, testLink)) match {
-      case User.PasswordResetRequested(ts, user, token, link) =>
-        assert(ts == now && user == testUser && token == testToken && link == testLink)
+    JsonEventBody(User.PasswordResetRequested(now, testUser.username, testToken, testLink)) match {
+      case User.PasswordResetRequested(ts, username, token, link) =>
+        assert(ts == now && username == testUser.username && token == testToken && link == testLink)
     }
   }
 }
