@@ -18,7 +18,7 @@ object User {
   case class Updated(timestamp: DateTime, user: UserProfile, previousDetails: UserProfile)
   case class Credited(timestamp: DateTime, user: User, amount: BigDecimal, currency: String, reason: String)
   case class PasswordChanged(timestamp: DateTime, user: User)
-  case class PasswordResetRequested(timestamp: DateTime, user: User, resetToken: String, resetLink: URL)
+  case class PasswordResetRequested(timestamp: DateTime, username: String, resetToken: String, resetLink: URL)
 
   implicit object Authenticated extends JsonEventBody[Authenticated] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.authenticated.v2+json")
@@ -48,6 +48,6 @@ object User {
 
   implicit object PasswordResetRequested extends JsonEventBody[PasswordResetRequested] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.password-reset-requested.v2+json")
-    def unapply(body: EventBody): Option[(DateTime, User, String, URL)] = JsonEventBody.unapply[PasswordResetRequested](body).flatMap(PasswordResetRequested.unapply)
+    def unapply(body: EventBody): Option[(DateTime, String, String, URL)] = JsonEventBody.unapply[PasswordResetRequested](body).flatMap(PasswordResetRequested.unapply)
   }
 }
