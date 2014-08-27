@@ -1,5 +1,13 @@
 # Change log
 
+## 0.6.1 ([#9](https://git.mobcastdev.com/Hermes/message-schemas/pull/9) 2014-08-27 15:18:37)
+
+Change user to username from PasswordResetRequested
+
+Improvement
+
+This change is needed to accommodate for some SSO-related password-reset scenarios and as far as I know ExactTarget does not use any user information except from the email anyway.
+
 ## 0.6.0 ([#8](https://git.mobcastdev.com/Hermes/message-schemas/pull/8) 2014-08-19 11:28:42)
 
 Added Email.Send message.
