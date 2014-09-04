@@ -1,5 +1,13 @@
 # Change log
 
+## 0.6.2 ([#10](https://git.mobcastdev.com/Hermes/message-schemas/pull/10) 2014-09-04 15:34:56)
+
+Introduce cross-compilation for 2.11.2
+
+### Improvements
+
+* Introduce cross-compilation for Scala 2.11.2
+
 ## 0.6.1 ([#9](https://git.mobcastdev.com/Hermes/message-schemas/pull/9) 2014-08-27 15:18:37)
 
 Change user to username from PasswordResetRequested
