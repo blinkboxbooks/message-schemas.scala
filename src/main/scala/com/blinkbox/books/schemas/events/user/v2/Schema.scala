@@ -20,6 +20,14 @@ object User {
   case class PasswordChanged(timestamp: DateTime, user: User)
   case class PasswordResetRequested(timestamp: DateTime, username: String, resetToken: String, resetLink: URL)
 
+  sealed trait MigratedSso {
+    def timestamp: DateTime
+    def user: User
+  }
+  case class TotalMigration(timestamp: DateTime, user: User) extends MigratedSso
+  case class PartialMigration(timestamp: DateTime, user: User) extends MigratedSso
+  case class ResetMigration(timestamp: DateTime, user: User) extends MigratedSso
+
   implicit object Authenticated extends JsonEventBody[Authenticated] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.authenticated.v2+json")
     def unapply(body: EventBody): Option[(DateTime, User, Option[Client])] = JsonEventBody.unapply[Authenticated](body).flatMap(Authenticated.unapply)
@@ -49,5 +57,20 @@ object User {
   implicit object PasswordResetRequested extends JsonEventBody[PasswordResetRequested] {
     val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.password-reset-requested.v2+json")
     def unapply(body: EventBody): Option[(DateTime, String, String, URL)] = JsonEventBody.unapply[PasswordResetRequested](body).flatMap(PasswordResetRequested.unapply)
+  }
+
+  implicit object TotalMigration extends JsonEventBody[TotalMigration] {
+    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.total-sso-migration.v2+json")
+    def unapply(body: EventBody): Option[(DateTime, User)] = JsonEventBody.unapply[TotalMigration](body).flatMap(TotalMigration.unapply)
+  }
+
+  implicit object PartialMigration extends JsonEventBody[PartialMigration] {
+    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.partial-sso-migration.v2+json")
+    def unapply(body: EventBody): Option[(DateTime, User)] = JsonEventBody.unapply[PartialMigration](body).flatMap(PartialMigration.unapply)
+  }
+
+  implicit object ResetMigration extends JsonEventBody[ResetMigration] {
+    val jsonMediaType = MediaType("application/vnd.blinkbox.books.events.user.partial-sso-migration.v2+json")
+    def unapply(body: EventBody): Option[(DateTime, User)] = JsonEventBody.unapply[ResetMigration](body).flatMap(ResetMigration.unapply)
   }
 }
