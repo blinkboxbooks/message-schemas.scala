@@ -1,5 +1,13 @@
 # Change log
 
+## 0.7.0 ([#11](https://git.mobcastdev.com/Hermes/message-schemas/pull/11) 2014-09-25 14:16:14)
+
+CP-1864 Introduce messages for user migration to SSO
+
+### New feature
+
+Introduce messages to be used when an user have been migrated to SSO by either matching all his passwords (Total), some of them (Partial) or by resetting his password (Reset).
+
 ## 0.6.2 ([#10](https://git.mobcastdev.com/Hermes/message-schemas/pull/10) 2014-09-04 15:34:56)
 
 Introduce cross-compilation for 2.11.2
