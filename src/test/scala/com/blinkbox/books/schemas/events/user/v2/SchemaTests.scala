@@ -60,4 +60,22 @@ class SchemaTests extends FunSuite {
         assert(ts == now && username == testUser.username && token == testToken && link == testLink)
     }
   }
+
+  test("Construct and destructure User.TotalMigration message") {
+    JsonEventBody(User.TotalMigration(now, testUser)) match {
+      case User.TotalMigration(ts, u) => assert(ts == now && u == testUser)
+    }
+  }
+
+  test("Construct and destructure User.PartialMigration message") {
+    JsonEventBody(User.PartialMigration(now, testUser)) match {
+      case User.PartialMigration(ts, u) => assert(ts == now && u == testUser)
+    }
+  }
+
+  test("Construct and destructure User.ResetMigration message") {
+    JsonEventBody(User.ResetMigration(now, testUser)) match {
+      case User.ResetMigration(ts, u) => assert(ts == now && u == testUser)
+    }
+  }
 }
