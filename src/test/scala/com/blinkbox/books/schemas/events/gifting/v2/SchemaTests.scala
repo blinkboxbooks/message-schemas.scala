@@ -10,7 +10,7 @@ class SchemaTests extends FunSuite {
 
   val expectedCampaign = Campaign(1, "book_stickers_campaign")
   val expectedUser = 3246
-  val expectedDetails = RedemptionDetails(Map("amount" -> "5.0"))
+  val expectedDetails = GiftDetails(Map("amount" -> "5.0"))
   val expectedDate = DateTime.parse("2014-10-07T12:20:08Z")
 
   test("Construct and destructure Gift.Redeemed message"){
