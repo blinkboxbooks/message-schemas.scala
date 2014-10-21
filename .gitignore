@@ -22,3 +22,8 @@ project/plugins/project/
 .cache
 .classpath
 .settings
+
+# Intellij specific
+atlassian-ide-plugin.xml
+
+.DS_Store
