@@ -1,5 +1,13 @@
 # Change log
 
+## 0.7.1 ([#12](https://git.mobcastdev.com/Hermes/message-schemas/pull/12) 2014-10-08 13:51:07)
+
+Added schemas for gift redeemed messages
+
+patch 
+
+- Added schema for Gift.Redeemed message
+
 ## 0.7.0 ([#11](https://git.mobcastdev.com/Hermes/message-schemas/pull/11) 2014-09-25 14:16:14)
 
 CP-1864 Introduce messages for user migration to SSO
