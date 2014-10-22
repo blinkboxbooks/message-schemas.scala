@@ -1,5 +1,12 @@
 # Change log
 
+## 0.7.2 ([#13](https://git.mobcastdev.com/Hermes/message-schemas/pull/13) 2014-10-22 11:52:27)
+
+Removed intermediate case class for gift details
+
+### Patch
+* Removed intermediate case class to avoid having to nest objects.
+
 ## 0.7.1 ([#12](https://git.mobcastdev.com/Hermes/message-schemas/pull/12) 2014-10-08 13:51:07)
 
 Added schemas for gift redeemed messages
