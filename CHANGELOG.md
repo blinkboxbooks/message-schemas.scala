@@ -1,5 +1,13 @@
 # Change log
 
+## 0.7.3 ([#14](https://git.mobcastdev.com/Hermes/message-schemas/pull/14) 2014-11-27 18:22:34)
+
+Include File Pending schema
+
+### Improvements
+
+- Schema to support the Watcher
+
 ## 0.7.2 ([#13](https://git.mobcastdev.com/Hermes/message-schemas/pull/13) 2014-10-22 11:52:27)
 
 Removed intermediate case class for gift details
