@@ -4,6 +4,7 @@ lazy val root = (project in file(".")).
     organization := "com.blinkbox.books.hermes",
     version := scala.util.Try(scala.io.Source.fromFile("VERSION").mkString.trim).getOrElse("0.0.0"),
     scalaVersion := "2.11.4",
+    crossScalaVersions := Seq("2.11.4"),
     scalacOptions := Seq("-unchecked", "-deprecation", "-feature", "-encoding", "utf8", "-target:jvm-1.7", "-Xfatal-warnings", "-Xfuture"),
     libraryDependencies ++= {
       Seq(
