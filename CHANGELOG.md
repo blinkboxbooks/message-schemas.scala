@@ -1,5 +1,15 @@
 # Change log
 
+## 0.8.0 ([#15](https://git.mobcastdev.com/Hermes/message-schemas/pull/15) 2015-01-16 17:43:21)
+
+Book.Cover and Scala 2.11
+
+### Breaking change
+
+- Added Book.Cover message
+- Removed the previous outdated references of epub message as book
+- Upgraded from Scala 2.10 to 2.11
+
 ## 0.7.3 ([#14](https://git.mobcastdev.com/Hermes/message-schemas/pull/14) 2014-11-27 18:22:34)
 
 Include File Pending schema
